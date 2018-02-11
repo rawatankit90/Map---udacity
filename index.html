@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="options-box">
+        <h1>Find Your New NYC Home</h1>
+        <div>
+          <input data-bind="value: filter, valueUpdate: 'afterkeydown'" />
+          <br/>
+          <!-- <input id="hide-listings" type="button" value="Hide Listings"> -->
+          <table id="mytable">
+            <thead>
+              <tr>
+                <th>Location Name</th>
+              </tr>
+            </thead>
+            <tbody data-bind="template: { name: 'placesTmpl', foreach: filteredItems }"></tbody>
+              <script id="placesTmpl" type="text/html">
+                <tr>
+                  <td>
+                    <input data-bind="value: title" />
+                  </td>
+                </tr>
+              </script>
+          </table>
+        </div>
+      </div>
+      <div id="map"></div>
+    </div>
+  </body>
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArYCyWp6A4195BKhwPGJWLuKL9_gIOyLw&v=3&callback=initMap">
+  </script>
+  <script src="js/knockout.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/filter.js"></script>
+  </html>
