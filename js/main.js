@@ -61,8 +61,50 @@ function populateInfoWindow(marker, infowindow) {
   // Check to make sure the infowindow is not already opened on this marker.
   if (infowindow.marker != marker) {
     infowindow.marker = marker;
-    infowindow.setContent('<div>' + marker.title + '</div>');
+    //infowindow.setContent('<div>' + marker.title + '</div>');
+    console.log(marker.position.lat());
+    lat =  marker.position.lat();
+    lng = marker.position.lng();
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        cache: false,
+        url: 'https://api.foursquare.com/v2/venues/explore?ll=' + lat + ',' + lng + '&limit=1&client_id=0MZXZNASBJLBLHWURYOPYJBTVFYCHOVX1MCUCMAQW3B4KWFY&client_secret=ELHKMQOA0OP2WLZ4GRENW05LCJG2BEIX432C53KK0GUZFSSW&v=20180211',
+      //  url: 'https://api.foursquare.com/v2/venues/explore?ll=40.7713024,-73.9632393&limit=1&client_id=0MZXZNASBJLBLHWURYOPYJBTVFYCHOVX1MCUCMAQW3B4KWFY&client_secret=ELHKMQOA0OP2WLZ4GRENW05LCJG2BEIX432C53KK0GUZFSSW&v=20180211',
+        success: function(data){
+        	var base = data.response.groups[0].items
+
+        	$.each(base, function(index){
+
+        		var url = base[index].venue.url;
+        		var llat = base[index].venue.location.lat;
+        		var llng = base[index].venue.location.lng;
+        		var name = base[index].venue.name;
+        		var icon = base[index].venue.categories[0].icon;
+            var phone = base[index].venue.contact.phone;
+            var address = base[index].venue.location.address;
+
+            var content ='<div><strong>' + name + '</strong></div>';
+            content += '<p>' + address + '</p>';
+            content += '<p>' + phone.substring(0,3) +'-' +phone.substring(3,6)+'-' +phone.substring(6,9)+'</p>'
+            content += '<p>' + url + '</p>';
+            infowindow.setContent(content);
+            infowindow.open(map, marker);
+            // Make sure the marker property is cleared if the infowindow is closed.
+            infowindow.addListener('closeclick', function() {
+            infowindow.marker = null;
+          });
+          //  console.log(name);
+            console.log(base[index].venue);
+        		// var marker = L.marker([llat, llng], {icon: myIcon}).addTo(map);
+        		// var content = '<a href="' + url + '" />' + name + '</a>'
+        		// marker.bindPopup(content)
+        	})
+        }
+    });
+
     infowindow.open(map, marker);
+
     // Make sure the marker property is cleared if the infowindow is closed.
     infowindow.addListener('closeclick',function(){
       infowindow.setMarker = null;
