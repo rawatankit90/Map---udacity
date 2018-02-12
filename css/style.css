@@ -4,6 +4,7 @@ body {
   height: 100%;
   margin: 10;
   padding: 10px;
+  background-color: black;
 }
 
 .container {
@@ -13,12 +14,28 @@ body {
 
 .input_text {
   font-size: 12px;
-  margin-left:10px;
+  margin-left:10px
+}
+
+input[type=text],
+select.form-control {
+    /* background: transparent; */
+    border: none;
+    border-bottom: 1px solid #000000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+input[type="text"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .h1b{
 font-size: 18px;
 font-family: -webkit-pictograph;
+color: #400070;
 }
 
 #map {
