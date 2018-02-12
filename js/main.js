@@ -62,7 +62,7 @@ function populateInfoWindow(marker, infowindow) {
   if (infowindow.marker != marker) {
     infowindow.marker = marker;
     //infowindow.setContent('<div>' + marker.title + '</div>');
-    console.log(marker.position.lat());
+    //console.log(marker.position.lat());
     lat =  marker.position.lat();
     lng = marker.position.lng();
     $.ajax({
@@ -84,10 +84,16 @@ function populateInfoWindow(marker, infowindow) {
             var phone = base[index].venue.contact.phone;
             var address = base[index].venue.location.address;
 
-            var content ='<div><strong>' + name + '</strong></div>';
-            content += '<p>' + address + '</p>';
-            content += '<p>' + phone.substring(0,3) +'-' +phone.substring(3,6)+'-' +phone.substring(6,9)+'</p>'
-            content += '<p>' + url + '</p>';
+            var content = '<div><strong>No Info Present</strong></div>';
+            if (name)
+            { content = '<div><strong>' + name + '</strong></div>';}
+
+            if (address) {content += '<p>' + address + '</p>';}
+            //console.dir("phone is" +phone)
+            if (phone)
+            {content += '<p>' + phone.substring(0,3) +'-' +phone.substring(3,6)+'-' +phone.substring(6,9)+'</p>';}
+            if(url)
+            { content += '<p>' + url + '</p>'; }
             infowindow.setContent(content);
             infowindow.open(map, marker);
             // Make sure the marker property is cleared if the infowindow is closed.
@@ -95,7 +101,7 @@ function populateInfoWindow(marker, infowindow) {
             infowindow.marker = null;
           });
           //  console.log(name);
-            console.log(base[index].venue);
+            //console.log(base[index].venue);
         		// var marker = L.marker([llat, llng], {icon: myIcon}).addTo(map);
         		// var content = '<a href="' + url + '" />' + name + '</a>'
         		// marker.bindPopup(content)
@@ -110,4 +116,27 @@ function populateInfoWindow(marker, infowindow) {
       infowindow.setMarker = null;
     });
   }
+}
+
+ function onClickMarkerPopulateInfo (title)
+ {
+    var largeInfowindow = new google.maps.InfoWindow();
+    var clickTitle = title.toLowerCase();
+  //  console.log(clickTitle);
+  //  console.dir(clickTitle + " " + markers.length);
+     for (var i=0;i<markers.length;i++ )
+     {
+      marker = markers[i];
+      var markerTitle = marker.title.toLowerCase();
+      console.log("markerTitle is "+markerTitle)
+      if (stringStartsWith(markerTitle,clickTitle))
+      {
+        populateInfoWindow(markers[i],largeInfowindow);
+      }
+      else {
+        console.dir("In else");
+        //markers[i].setVisible(false);
+      }
+      //clickTitle="";
+    }
 }

@@ -11,6 +11,7 @@
 function AppViewModel() {
       var self = this;
       self.filter = ko.observable("");
+    //  self.clickitem = ko.observable("test");
       self.places = ko.observableArray(locations);
       self.filteredItems = ko.computed(function() {
         var filter = this.filter().toLowerCase();

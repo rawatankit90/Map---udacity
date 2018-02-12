@@ -23,10 +23,11 @@
               <script id="placesTmpl" type="text/html">
                 <tr>
                   <td>
-                     <a href="#" ><p data-bind="text:title"></p></a>
+                         <a href="#"  onclick="onClickMarkerPopulateInfo(title)"data-bind='attr:{title: title } '><p data-bind="text:title"></p></a>
                   </td>
                 </tr>
               </script>
+              <!-- <button data-bind="click: function () { console.log($context); }"> Context Log </button> -->
           </table>
         </div>
       </div>
@@ -37,7 +38,6 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArYCyWp6A4195BKhwPGJWLuKL9_gIOyLw&v=3&callback=initMap">
   </script>
   <script src="js/knockout.js"></script>
-
   <script src="js/main.js"></script>
   <script src="js/filter.js"></script>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
