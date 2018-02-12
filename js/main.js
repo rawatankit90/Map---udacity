@@ -107,6 +107,16 @@ function populateInfoWindow(marker, infowindow) {
         		// marker.bindPopup(content)
         	})
         }
+    }).fail(function() {
+        // Send alert
+        var content = '<div>There was an issue loading the data. Please try again in sometime</div>';
+        console.log("foursquare api error");
+        infowindow.setContent(content);
+        infowindow.open(map, marker);
+        // Make sure the marker property is cleared if the infowindow is closed.
+        infowindow.addListener('closeclick', function() {
+        infowindow.marker = null;
+        });
     });
 
     infowindow.open(map, marker);

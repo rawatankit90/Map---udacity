@@ -2,8 +2,8 @@ html,
 body {
   font-family: Arial, sans-serif;
   height: 100%;
-  margin: 0;
-  padding: 0;
+  margin: 10;
+  padding: 10px;
 }
 
 .container {
@@ -11,22 +11,20 @@ body {
     position: relative;
 }
 
-input {
+.input_text {
   font-size: 12px;
+  margin-left:10px;
 }
 
-h1 {
-    color: #525454;
-    font-size: 18px;
-    margin: 0 0 10px 0;
-    text-align: center;
+.h1b{
+font-size: 18px;
+font-family: -webkit-pictograph;
 }
-
 
 #map {
   bottom:0px;
   height: 100%;
-  left: 260px;
+  /* left: 260px; */
   /* left : 260px; */
   position: absolute;
   right: 0px;
