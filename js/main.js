@@ -150,3 +150,13 @@ function populateInfoWindow(marker, infowindow) {
       //clickTitle="";
     }
 }
+
+function error()
+{
+  var mapArea = document.getElementById('map');
+  mapArea.style.padding = '100px';
+  mapArea.style.fontSize ='36px';
+  mapArea.style.color ='red';
+  mapArea.append("Error Loading the Google Maps");
+  console.log("Error loading google API");
+}
