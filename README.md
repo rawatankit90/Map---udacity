@@ -13,7 +13,7 @@ In order to view these files you must have a
 ## With the above steps done
 1) You can access the files from [ this Github link ] (https://github.com/rawatankit90/Map---udacity.git) by clicking the green download button on the right.
 2) Unzip the downloaded file.
-3) Open your web browser and run the file Index.html in the browser to view the Portfolio page.
+3) Open your web browser and run the file Index.html in the browser to view the Map page.
 
 
 ## Built With
