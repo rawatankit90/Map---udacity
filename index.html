@@ -49,26 +49,12 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArYCyWp6A4195BKhwPGJWLuKL9_gIOyLw&v=3&callback=initMap" onerror="error()">
   </script>
 
-<script>
-  $("#hideandexpand").click(function() {
-    if ($('#hideandseek').css('display')!='none')
-    {
-      $('#hideandseek').hide();
-      $('#map').removeClass('col-xs-9');
-      $('#map').addClass('col-xs-11');
-    }
-    else
-    {
-      $('#hideandseek').show();
-      $('#map').removeClass('col-xs-11');
-      $('#map').addClass('col-xs-9');
-    }
-  });
-</script>
+
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" onerror="error()"></script>
+<script src="js/button_hide.js" ></script>
 </html>
