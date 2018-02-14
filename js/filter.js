@@ -26,7 +26,35 @@ function AppViewModel() {
           });
         }
       },this);
-      displayPlaces(self.places);
+      //displayPlaces(self.places);
+
+      /* Udacity first Review Change*/
+     self.onClickMarkerPopulateInfo = function()
+      {
+        var largeInfowindow = new google.maps.InfoWindow();
+        //var oldinfowindow = largeInfowindow;
+        var clickTitle = this.title.toLowerCase();
+        for (var i=0;i<markers.length;i++ )
+          {
+           marker = markers[i];
+           var markerTitle = marker.title.toLowerCase();
+           //console.log("markerTitle is "+markerTitle)
+          // marker.largeInfowindow = null;
+           if (stringStartsWith(markerTitle,clickTitle))
+           {
+             toggleBounce(markers[i]);
+             populateInfoWindow(markers[i],largeInfowindow,true);
+           }
+           else {
+             console.dir("In else");
+             //largeInfowindow.setMarker = null;
+             //markers[i].setVisible(false);
+           }
+
+           //clickTitle="";
+         }
+     }
+
 }
 
 function markerChange(filter)

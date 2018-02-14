@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     </style>
     <link rel="stylesheet" href="css/style.css">
@@ -25,7 +27,9 @@
               <script id="placesTmpl" type="text/html">
                 <tr>
                   <td>
-                         <a href="#"  onclick="onClickMarkerPopulateInfo(title)"data-bind='attr:{title: title } '><p data-bind="text:title"></p></a>
+                         <!-- <a href="#"  onclick="onClickMarkerPopulateInfo(title)"data-bind='attr:{title: title } '><p data-bind="text:title"></p></a> -->
+                          <!-- Udacity first Review Change -->
+                         <input data-bind="value: title, click: $parent.onClickMarkerPopulateInfo" type="button" class="btn btn-small btn-link" >
                   </td>
                 </tr>
               </script>
@@ -36,15 +40,16 @@
     </div>
   </div>
   </body>
-  <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArYCyWp6A4195BKhwPGJWLuKL9_gIOyLw&v=3&callback=initMap" onerror="error()">
-  </script>
   <script src="js/knockout.js"></script>
   <script src="js/main.js"></script>
   <script src="js/filter.js"></script>
   <!-- <script src="js/hide.js"></script> -->
   <script src="https://code.jquery.com/jquery-1.10.2.js" onerror="error()"></script>
-  <script>
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArYCyWp6A4195BKhwPGJWLuKL9_gIOyLw&v=3&callback=initMap" onerror="error()">
+  </script>
+
+<script>
   $("#hideandexpand").click(function() {
     if ($('#hideandseek').css('display')!='none')
     {
@@ -59,7 +64,7 @@
       $('#map').addClass('col-xs-9');
     }
   });
-    </script>
+</script>
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Optional theme -->

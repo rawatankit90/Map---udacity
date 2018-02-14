@@ -3,6 +3,7 @@ var map;
 // Create a new blank array for all the listing markers.
 var markers = [];
 
+var openInfoWindow = null;
 // These are the real estate listings that will be shown to the user.
 // Normally we'd have these in a database instead.
 var locations = [
@@ -38,11 +39,20 @@ function initMap() {
       animation: google.maps.Animation.DROP,
       id: i
     });
-    // Push the marker to our array of markers.
+
+      // Push the marker to our array of markers.
     markers.push(marker);
     // Create an onclick event to open an infowindow at each marker.
     marker.addListener('click', function() {
-      populateInfoWindow(this, largeInfowindow);
+      populateInfoWindow(this, largeInfowindow,false);
+    });
+
+    marker.addListener('mouseover', function(){
+      toggleBounce(this)
+    });
+
+    marker.addListener('mouseout', function(){
+      toggleBounce(this)
     });
     bounds.extend(markers[i].position);
   }
@@ -54,11 +64,37 @@ function initMap() {
   map.fitBounds(bounds);
 }
 
+/* Udacity first Review Change . Marker will bounce one cycle*/
+function toggleBounce(marker) {
+    if (marker.getAnimation() !== null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function(){ marker.setAnimation(null); }, 750);
+    }
+  }
+
 // This function populates the infowindow when the marker is clicked. We'll only allow
 // one infowindow which will open at the marker that is clicked, and populate based
 // on that markers position.
-function populateInfoWindow(marker, infowindow) {
-  // Check to make sure the infowindow is not already opened on this marker.
+
+/* Udacity first Review Change*/
+/* Modified the below function to get the information from where the Populate Info Window is getting called. If the function is getting called
+ from the link in the left side, then explicitely closing the info window. For that purpose Use the variable "openInfoWindow" to save the last openWindow information.
+ */
+function populateInfoWindow(marker, infowindow, fromLink) {
+  if(openInfoWindow==null)
+  {
+    openInfoWindow = infowindow;
+    //console.log("in if marker")
+  }
+  else if (fromLink) {
+    //console.log("in else marker")
+    //openInfoWindow.animation=null;
+    openInfoWindow.close();
+    openInfoWindow = infowindow;
+  }
+    // Check to make sure the infowindow is not already opened on this marker.
   if (infowindow.marker != marker) {
     infowindow.marker = marker;
     //infowindow.setContent('<div>' + marker.title + '</div>');
@@ -97,9 +133,9 @@ function populateInfoWindow(marker, infowindow) {
             infowindow.setContent(content);
             infowindow.open(map, marker);
             // Make sure the marker property is cleared if the infowindow is closed.
-            infowindow.addListener('closeclick', function() {
-            infowindow.marker = null;
-          });
+          //   infowindow.addListener('closeclick', function() {
+          //   infowindow.marker = null;
+          // });
           //  console.log(name);
             //console.log(base[index].venue);
         		// var marker = L.marker([llat, llng], {icon: myIcon}).addTo(map);
@@ -124,32 +160,34 @@ function populateInfoWindow(marker, infowindow) {
     // Make sure the marker property is cleared if the infowindow is closed.
     infowindow.addListener('closeclick',function(){
       infowindow.setMarker = null;
+      marker.setAnimation(null);
     });
   }
 }
 
- function onClickMarkerPopulateInfo (title)
- {
-    var largeInfowindow = new google.maps.InfoWindow();
-    var clickTitle = title.toLowerCase();
-  //  console.log(clickTitle);
-  //  console.dir(clickTitle + " " + markers.length);
-     for (var i=0;i<markers.length;i++ )
-     {
-      marker = markers[i];
-      var markerTitle = marker.title.toLowerCase();
-      console.log("markerTitle is "+markerTitle)
-      if (stringStartsWith(markerTitle,clickTitle))
-      {
-        populateInfoWindow(markers[i],largeInfowindow);
-      }
-      else {
-        console.dir("In else");
-        //markers[i].setVisible(false);
-      }
-      //clickTitle="";
-    }
-}
+/* Udacity first Review Change*/
+//  function onClickMarkerPopulateInfo (title)
+//  {
+//     var largeInfowindow = new google.maps.InfoWindow();
+//     var clickTitle = title.toLowerCase();
+//   //  console.log(clickTitle);
+//   //  console.dir(clickTitle + " " + markers.length);
+//      for (var i=0;i<markers.length;i++ )
+//      {
+//       marker = markers[i];
+//       var markerTitle = marker.title.toLowerCase();
+//       console.log("markerTitle is "+markerTitle)
+//       if (stringStartsWith(markerTitle,clickTitle))
+//       {
+//         populateInfoWindow(markers[i],largeInfowindow);
+//       }
+//       else {
+//         console.dir("In else");
+//         //markers[i].setVisible(false);
+//       }
+//       //clickTitle="";
+//     }
+// }
 
 function error()
 {
