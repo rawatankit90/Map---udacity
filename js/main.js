@@ -192,19 +192,25 @@ function populateInfoWindow(marker, infowindow, fromLink) {
 function googleerror()
 {
   var mapArea = document.getElementById('map');
-  mapArea.style.padding = '100px';
-  mapArea.style.fontSize ='36px';
-  mapArea.style.color ='red';
-  mapArea.append("Error Loading the Google Maps");
+  mapArea.style.fontSize ='x-large';
+  mapArea.style.paddingLeft='10px';
+  mapArea.style.paddingTop='60px';
+  mapArea.style.color ='grey';
+  console.log(mapArea);
+  mapArea.append("Error Loading the Google Maps.");
   console.log("Error loading google API");
 }
 
-function Jqueryerror()
-{
-  var mapArea = document.getElementById('map');
-  mapArea.style.padding = '100px';
-  mapArea.style.fontSize ='36px';
-  mapArea.style.color ='red';
-  mapArea.append("Error Loading the Jquery.Please check Internet");
-  console.log("Error Loading the Jquery.Please check Internet");
-}
+// //
+// window.onerror = function(message, url ,line ){
+//   //alert("an error");
+//   var mapArea = document.getElementById('map');
+//   mapArea.style.fontSize ='50px';
+//   mapArea.style.paddingLeft='10px';
+//   mapArea.style.paddingTop='60px';
+//   mapArea.style.color ='grey';
+//   console.log(mapArea);
+//   mapArea.append("Error Loading the Google Maps");
+//   console.log("Error loading google API");
+// //  console.log("error is caught with message = " + message +", url = "+ ", line =" +line);
+// }
