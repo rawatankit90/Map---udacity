@@ -189,7 +189,7 @@ function populateInfoWindow(marker, infowindow, fromLink) {
 //     }
 // }
 
-function error()
+function googleerror()
 {
   var mapArea = document.getElementById('map');
   mapArea.style.padding = '100px';
@@ -197,4 +197,14 @@ function error()
   mapArea.style.color ='red';
   mapArea.append("Error Loading the Google Maps");
   console.log("Error loading google API");
+}
+
+function Jqueryerror()
+{
+  var mapArea = document.getElementById('map');
+  mapArea.style.padding = '100px';
+  mapArea.style.fontSize ='36px';
+  mapArea.style.color ='red';
+  mapArea.append("Error Loading the Jquery.Please check Internet");
+  console.log("Error Loading the Jquery.Please check Internet");
 }
