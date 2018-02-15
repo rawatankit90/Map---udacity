@@ -193,7 +193,7 @@ function googleerror()
 {
   var mapArea = document.getElementById('map');
   mapArea.style.fontSize ='x-large';
-  mapArea.style.paddingLeft='10px';
+//mapArea.style.paddingLeft='10px';
   mapArea.style.paddingTop='60px';
   mapArea.style.color ='grey';
   console.log(mapArea);
@@ -202,15 +202,15 @@ function googleerror()
 }
 
 // //
-// window.onerror = function(message, url ,line ){
-//   //alert("an error");
-//   var mapArea = document.getElementById('map');
-//   mapArea.style.fontSize ='50px';
-//   mapArea.style.paddingLeft='10px';
-//   mapArea.style.paddingTop='60px';
-//   mapArea.style.color ='grey';
-//   console.log(mapArea);
-//   mapArea.append("Error Loading the Google Maps");
-//   console.log("Error loading google API");
-// //  console.log("error is caught with message = " + message +", url = "+ ", line =" +line);
-// }
+window.onerror = function(message, url ,line ){
+  //alert("an error");
+  var mapArea = document.getElementById('map');
+  mapArea.style.fontSize ='x-large';
+  mapArea.style.paddingLeft='10px';
+  mapArea.style.paddingTop='60px';
+  mapArea.style.color ='grey';
+  console.log(mapArea);
+  mapArea.append("Error Loading the Google Maps");
+  console.log("Error loading google API");
+//  console.log("error is caught with message = " + message +", url = "+ ", line =" +line);
+}

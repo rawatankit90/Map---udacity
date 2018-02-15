@@ -1,4 +1,3 @@
-
 // var locations = [
 //   {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
 //   {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
@@ -31,28 +30,36 @@ function AppViewModel() {
       /* Udacity first Review Change*/
      self.onClickMarkerPopulateInfo = function()
       {
-        var largeInfowindow = new google.maps.InfoWindow();
-        //var oldinfowindow = largeInfowindow;
-        var clickTitle = this.title.toLowerCase();
-        for (var i=0;i<markers.length;i++ )
-          {
-           marker = markers[i];
-           var markerTitle = marker.title.toLowerCase();
+        try
+         {
+           var largeInfowindow = new google.maps.InfoWindow();
+           //var oldinfowindow = largeInfowindow;
+           var clickTitle = this.title.toLowerCase();
+           for (var i=0;i<markers.length;i++ )
+            {
+              marker = markers[i];
+              var markerTitle = marker.title.toLowerCase();
            //console.log("markerTitle is "+markerTitle)
           // marker.largeInfowindow = null;
-           if (stringStartsWith(markerTitle,clickTitle))
-           {
-             toggleBounce(markers[i]);
-             populateInfoWindow(markers[i],largeInfowindow,true);
-           }
-           else {
-             console.dir("In else");
+              if (stringStartsWith(markerTitle,clickTitle))
+                {
+                  toggleBounce(markers[i]);
+                  populateInfoWindow(markers[i],largeInfowindow,true);
+                }
+                else {
+                  console.dir("In else");
              //largeInfowindow.setMarker = null;
              //markers[i].setVisible(false);
-           }
+                }
 
            //clickTitle="";
-         }
+            }
+          }
+          catch(err)
+          {
+            document.getElementById("map").innerHTML = 'Error loading google API';
+          }
+
      }
 
 }

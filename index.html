@@ -10,9 +10,12 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-1">
         <button id ="hideandexpand" href="#" class="btn btn-info">|||</button>
       </div>
+      <div class="col-xs-11">
+
+    </div>
       </div>
       <div class="row">
         <div class="col-xs-3" id="hideandseek">
@@ -29,7 +32,7 @@
                   <td>
                          <!-- <a href="#"  onclick="onClickMarkerPopulateInfo(title)"data-bind='attr:{title: title } '><p data-bind="text:title"></p></a> -->
                           <!-- Udacity first Review Change -->
-                         <input data-bind="value: title, click: $parent.onClickMarkerPopulateInfo" type="button" class="btn btn-small btn-link" >
+                         <input data-bind="value: title, click: $parent.onClickMarkerPopulateInfo" type="button" class="btn-small btn-link ko_font" />
                   </td>
                 </tr>
               </script>
@@ -43,10 +46,18 @@
   <script src="js/knockout.js"></script>
   <script src="js/main.js"></script>
   <script src="js/filter.js"></script>
-  <script src="js/jquery-3.3.1.min.js"></script>
+  <!-- <script src="js/hide.js"></script> -->
+  <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+  <script src="js/jquery-3.3.1.min.js"> </script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <!-- <script src="js/jquery-3.3.1.min"></script> -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
   <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css"/>
   <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
   <script src="js/button_hide.js" ></script>
+
   <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArYCyWp6A4195BKhwPGJWLuKL9_gIOyLw&v=3&callback=initMap" onerror="googleerror()">
   </script>
