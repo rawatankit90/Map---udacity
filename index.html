@@ -8,36 +8,32 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-xs-1">
-        <button id ="hideandexpand" href="#" class="btn btn-info">|||</button>
+      <div class="col-xs-6">
       </div>
-      <div class="col-xs-11">
-
-    </div>
+      <div class="col-xs-6">
+          <button id ="hideandexpand" href="#" class="btn btn-info btn-lg" >|||</button>
+      </div>
       </div>
       <div class="row">
         <div class="col-xs-3" id="hideandseek">
-          <h1 class="h1b">New York Places</h1>
-          <input type="text" class="form-control" placeholder="Search from below" data-bind="value: filter, valueUpdate: 'afterkeydown'" />
-          <br/>
-          <!-- <input id="hide-listings" type="button" value="Hide Listings"> -->
-          <table id="mytable">
-            <thead>
-            </thead>
-            <tbody data-bind="template: { name: 'placesTmpl', foreach: filteredItems }"></tbody>
-              <script id="placesTmpl" type="text/html">
-                <tr>
-                  <td>
-                         <!-- <a href="#"  onclick="onClickMarkerPopulateInfo(title)"data-bind='attr:{title: title } '><p data-bind="text:title"></p></a> -->
-                          <!-- Udacity first Review Change -->
-                         <input data-bind="value: title, click: $parent.onClickMarkerPopulateInfo" type="button" class="btn-small btn-link ko_font" />
-                  </td>
-                </tr>
-              </script>
-              <!-- <button data-bind="click: function () { console.log($context); }"> Context Log </button> -->
-          </table>
+          <div class="row">
+            <h1 class="h1b">New York Places</h1>
+          </div>
+              <input type="text" class="form-control" placeholder="Search from below" data-bind="value: filter, valueUpdate: 'afterkeydown'" />
+              <br/>
+                <!-- <input id="hide-listings" type="button" value="Hide Listings"> -->
+              <table id="mytable" >
+                <tbody data-bind="template:{name: 'placesTmpl', foreach: filteredItems }"></tbody>
+                <script id="placesTmpl" type="text/html">
+                  <tr>
+                    <td >
+                         <input data-bind="value: title, click: $parent.onClickMarkerPopulateInfo , attr: {title: title }" data-toggle="tooltip" type="button" class=" btn-small btn-link ko_font" />
+                    </td>
+                  </tr>
+                </script>
+              </table>
         </div>
       <div class="col-xs-9" id="map"></div>
     </div>

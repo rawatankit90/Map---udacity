@@ -47,13 +47,13 @@ function initMap() {
       populateInfoWindow(this, largeInfowindow,false);
     });
 
-    marker.addListener('mouseover', function(){
+    marker.addListener('click', function(){
       toggleBounce(this)
     });
 
-    marker.addListener('mouseout', function(){
-      toggleBounce(this)
-    });
+    // marker.addListener('mouseout', function(){
+    //   toggleBounce(this)
+    // });
     bounds.extend(markers[i].position);
   }
 
